@@ -119,7 +119,7 @@ void game::checkWins()
             // Player wins
             playerList[i].addChips(playerList[i].getCurrentBet());
             cout << "You bet: " << playerList[i].getCurrentBet() << endl;
-            cout << "You lost! your current chip total is: " << playerList[i].getChips() << endl;
+            cout << "You won! your current chip total is: " << playerList[i].getChips() << endl;
         }
     }
 }
@@ -145,6 +145,8 @@ void game::resetHands()
     {
         playerList[i].clearHand();
     }
+
+    dealer.clearHand();
 }
 
 game::~game()

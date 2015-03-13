@@ -5,12 +5,12 @@ using namespace std;
 
 human::human()
 {
-
+    // What...
 }
 
 human::human(int chips) : player(chips)
 {
-    //ctor
+    // Just using this to call parent constructor
 }
 
 bool human::requestCard()
