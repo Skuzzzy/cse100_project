@@ -3,6 +3,11 @@
 
 using namespace std;
 
+human::human()
+{
+
+}
+
 human::human(int chips) : player(chips)
 {
     //ctor
@@ -10,7 +15,6 @@ human::human(int chips) : player(chips)
 
 bool human::requestCard()
 {
-    cout << endl << getHandString() << endl;
     cout << "Another card?(1/0): ";
     int choice;
     cin >> choice;
@@ -24,7 +28,7 @@ bool human::requestCard()
     }
 }
 
-void human::requestBet()
+    void human::requestBet()
 {
     cout << "Place your bet: ";
     int choice;

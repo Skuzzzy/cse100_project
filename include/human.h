@@ -6,6 +6,7 @@
 class human : public player
 {
     public:
+        human();
         human(int chips);
         virtual ~human();
 

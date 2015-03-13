@@ -3,11 +3,13 @@
 #include "hand.h"
 #include "human.h"
 #include "deck.h"
+#include "game.h"
 
 using namespace std;
 
 int main()
 {
+    /*
     card a(3,3);
     card b(3,13);
     card c(3,10);
@@ -43,6 +45,9 @@ int main()
     deck d;
 
     cout << d.popCard().toString() << endl;
+    */
+
+    game bjg(1,50);
 
     return 0;
 }

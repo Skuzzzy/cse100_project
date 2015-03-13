@@ -7,6 +7,7 @@
 class player
 {
     public:
+        player();
         player(int chips);
         virtual ~player();
 

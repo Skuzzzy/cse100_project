@@ -1,6 +1,11 @@
 #include "player.h"
 #include <string>
 
+player::player()
+{
+    
+}
+
 int player::getCurrentBet()
 {
     return currentBet;
