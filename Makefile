@@ -2,6 +2,7 @@ all:
 	g++ -Wall -fexceptions -g -I include -c ./src/human.cpp -o obj/human.o
 	g++ -Wall -fexceptions -g -I include -c ./src/game.cpp -o obj/game.o
 	g++ -Wall -fexceptions -g -I include -c ./src/deck.cpp -o obj/deck.o
+	g++ -Wall -fexceptions -g -I include -c ./src/computer.cpp -o obj/computer.o
 	g++ -Wall -fexceptions -g -I include -c ./src/player.cpp -o obj/player.o
 	g++ -Wall -fexceptions -g -I include -c ./src/hand.cpp -o obj/hand.o
 	g++ -Wall -fexceptions -g -I include -c ./src/card.cpp -o obj/card.o

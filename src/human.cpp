@@ -1,13 +1,6 @@
 #include "human.h"
 #include <iostream>
 
-using namespace std;
-
-human::human()
-{
-    // What...
-}
-
 human::human(int chips) : player(chips)
 {
     // Just using this to call parent constructor
@@ -15,9 +8,9 @@ human::human(int chips) : player(chips)
 
 bool human::requestCard()
 {
-    cout << "Another card?(1/0): ";
+    std::cout << "Another card?(1/0): ";
     int choice;
-    cin >> choice;
+    std::cin >> choice;
     if(choice == 1)
     {
         return true;
@@ -30,9 +23,9 @@ bool human::requestCard()
 
     void human::requestBet()
 {
-    cout << "Place your bet: ";
+    std::cout << "Place your bet: ";
     int choice;
-    cin >> choice;
+    std::cin >> choice;
     currentBet = choice;
 }
 

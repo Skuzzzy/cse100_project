@@ -1,13 +1,14 @@
 #include "game.h"
 #include "player.h"
 #include "human.h"
+#include "computer.h"
 
 #include <iostream>
 using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
-    dealer = new human(-1);
+    dealer = new computer(-1);
 
     for(int i=0; i<numHumanPlayers; i++)
     {
