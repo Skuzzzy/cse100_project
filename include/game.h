@@ -17,7 +17,7 @@ class game
     private:
         human dealer;
         deck blackjackDeck;
-        std::vector<human> playerList;
+        std::vector<player*> playerList;
 
         void startGame();
         void dealCards();
