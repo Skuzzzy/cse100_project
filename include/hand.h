@@ -3,6 +3,7 @@
 
 #include "card.h"
 #include <string>
+#include <vector>
 
 class hand
 {
@@ -20,6 +21,7 @@ class hand
         std::string toString();
     protected:
     private:
+        std::vector<card> cards;
 };
 
 #endif // HAND_H

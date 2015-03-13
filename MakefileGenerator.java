@@ -24,7 +24,8 @@ public class MakefileGenerator
 
         File src = new File("./src");
         File[] srcFiles = src.listFiles();
-
+	
+	// Using the same compile arguments as code::blocks
         final String firstPart = "g++ -Wall -fexceptions -g -I include -c ";
 
         String makeFile = "";
@@ -53,7 +54,7 @@ public class MakefileGenerator
 
         try
         {
-            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("filename.txt")));
+            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Makefile")));
             writer.write(makeFile);
             writer.close();
         }

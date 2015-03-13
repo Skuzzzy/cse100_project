@@ -1,6 +1,8 @@
 #include <iostream>
 #include "card.h"
 #include "hand.h"
+#include "human.h"
+#include "deck.h"
 
 using namespace std;
 
@@ -21,6 +23,26 @@ int main()
     cout << h.calculateHandValue() << endl;
 
     cout << h.toString() << endl;
+
+    hand qwe;
+    cout << "*" << qwe.toString() << "*" << endl;
+
+    qwe.addCard(a);
+
+    cout << "*" << h.toString() << "*" << endl;
+
+    human asd(50);
+
+    cout << asd.getChips();
+
+    asd.addCardToHand(a);
+    asd.addCardToHand(b);
+
+    asd.requestCard();
+
+    deck d;
+
+    cout << d.popCard().toString() << endl;
 
     return 0;
 }

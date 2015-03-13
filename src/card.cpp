@@ -2,10 +2,12 @@
 #include <string>
 #include <utility>
 
+
+// Global definitions for card constants
+// IN GLOBAL SCOPE
 const int card::NUMSUIT = 4;
 const int card::NUMVALUE = 14;
 
-int test = card::NUMVALUE;
 const std::string allsuits[card::NUMSUIT] = {"Hearts","Diamonds","Clubs","Spades"};
 const std::pair <std::string,int> allvalues[card::NUMVALUE] =
     {
@@ -24,10 +26,6 @@ const std::pair <std::string,int> allvalues[card::NUMVALUE] =
     std::make_pair(std::string("King"),10),
     std::make_pair(std::string("Ace"),0) //Flag value for an Ace to be handled
     };
-
-std::string suit;
-std::string nameValue;
-int value;
 
 card::card(int suitIndex,int valueIndex)
 {

@@ -2,8 +2,6 @@
 #include <vector>
 #include "card.h"
 
-std::vector<card> cards;
-
 hand::hand()
 {
     cards.reserve(12); // At 12 cards the player will always bust
@@ -24,7 +22,7 @@ int hand::calculateHandValue()
     int value = 0;
     int aceCount = 0;
 
-    for(int i =0; i<cards.size(); i++)
+    for(int i =0; i<static_cast<int>(cards.size()); i++)
     {
         value += cards[i].getValue();
 
@@ -64,8 +62,8 @@ bool hand::hasBust()
 
 std::string hand::toString()
 {
-    std::string handString;
-    for(int i =0; i<cards.size(); i++)
+    std::string handString = "";
+    for(int i =0; i<static_cast<int>(cards.size()); i++)
     {
         handString.append("[" + cards[i].toString() + "]");
     }

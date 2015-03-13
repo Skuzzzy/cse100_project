@@ -1,12 +1,16 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
+#include "player.h"
 
-class human
+class human : public player
 {
     public:
-        human();
+        human(int chips);
         virtual ~human();
+
+        bool requestCard();
+        void requestBet();
     protected:
     private:
 };

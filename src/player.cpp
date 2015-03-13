@@ -28,7 +28,7 @@ void player::clearHand()
 
 std::string player::getHandString()
 {
-    return playerHand.toString();
+    return player::playerHand.toString();
 }
 
 int player::getHandValue()
@@ -41,9 +41,9 @@ bool player::hasBust()
     return playerHand.hasBust();
 }
 
-player::player()
+player::player(int chips)
 {
-    //ctor
+    player::chips = chips;
 }
 
 player::~player()
