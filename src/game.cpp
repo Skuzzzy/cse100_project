@@ -7,8 +7,7 @@ using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
-    human d(-1);
-    dealer = d;
+    dealer = new human(-1);
 
     for(int i=0; i<numHumanPlayers; i++)
     {
@@ -49,8 +48,8 @@ void game::startGame()
 void game::dealCards()
 {
     cout << "Dealing cards" << endl;
-    dealer.addCardToHand(blackjackDeck.popCard());
-    dealer.addCardToHand(blackjackDeck.popCard());
+    (*dealer).addCardToHand(blackjackDeck.popCard());
+    (*dealer).addCardToHand(blackjackDeck.popCard());
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
         (*playerList[i]).addCardToHand(blackjackDeck.popCard());
@@ -88,20 +87,20 @@ void game::getPlayerDecisions()
 
 void game::getDealerDecision()
 {
-    cout << "Dealers hand: " + dealer.getHandString() << endl;
-    bool hit = dealer.requestCard();
+    cout << "Dealers hand: " + (*dealer).getHandString() << endl;
+    bool hit = (*dealer).requestCard();
     while(hit == true)
     {
-        dealer.addCardToHand(blackjackDeck.popCard());
-        cout << "Dealers hand: " + dealer.getHandString() << endl;
-        hit = dealer.requestCard();
+        (*dealer).addCardToHand(blackjackDeck.popCard());
+        cout << "Dealers hand: " + (*dealer).getHandString() << endl;
+        hit = (*dealer).requestCard();
     }
     cout << "Dealer decision complete" << endl << endl;
 }
 
 void game::checkWins()
 {
-    int dealerHandValue = dealer.getHandValue();
+    int dealerHandValue = (*dealer).getHandValue();
 
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
@@ -145,7 +144,7 @@ void game::resetHands()
         (*playerList[i]).clearHand();
     }
 
-    dealer.clearHand();
+    (*dealer).clearHand();
 }
 
 game::~game()

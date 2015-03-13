@@ -15,7 +15,7 @@ class game
         virtual ~game();
     protected:
     private:
-        human dealer;
+        player* dealer;
         deck blackjackDeck;
         std::vector<player*> playerList;
 
