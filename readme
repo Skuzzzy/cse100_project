@@ -1,0 +1,9 @@
+CSE 100 Project
+
+Requirements: javac java g++ ncurses(on ncurses branch)
+
+javac MakefileGenerator.java
+java MakefileGenerator
+
+then
+make all OR make clean or make run
