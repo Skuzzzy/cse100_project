@@ -11,7 +11,11 @@ using namespace std;
 game::game(int numHumanPlayers, int startingChips)
 {
     graphics g;
-    g.refreshNcurses();
+    
+    //g.getStringInput();
+    //g.refreshNcurses();
+    //g.clearNcurses();
+    //g.print("Chips");
 
     dealer = new computer(-1);
 
