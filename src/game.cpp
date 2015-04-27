@@ -73,7 +73,7 @@ void game::getPlayerBets()
     {
         g.print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
         (*playerList[i]).requestBet();
-        //g.print("You bet " + (*playerList[i]).getCurrentBet() + string("\n"));
+        g.print("You bet " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
     }
 }
 
@@ -119,7 +119,7 @@ void game::checkWins()
         {
             //Player loses
             (*playerList[i]).addChips((-1)*((*playerList[i]).getCurrentBet()));
-            //g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
+            g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
             g.print("You lost! your current chip total is: " + g.intToString((*playerList[i]).getChips())  + string("\n") + "Press enter to continue" + string("\n"));
             (*playerList[i]).getChips();
             g.pause();
@@ -128,7 +128,7 @@ void game::checkWins()
         {
             // Player wins
             (*playerList[i]).addChips((*playerList[i]).getCurrentBet());
-            //g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
+            g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
             g.print("You won! your current chip total is: "+ g.intToString((*playerList[i]).getChips()) + string("\n") + "Press enter to continue" + string("\n"));
             
             g.pause();
