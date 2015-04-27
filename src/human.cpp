@@ -26,6 +26,12 @@ bool human::requestCard()
     std::cout << "Place your bet: ";
     int choice;
     std::cin >> choice;
+    while(getChips() < choice)
+    {
+        std::cout << "You bet too much, please bet no more than " << getChips() << " chips." << std::endl;
+        std::cout << "Place your bet: ";
+        std::cin >> choice;
+    }
     currentBet = choice;
 }
 

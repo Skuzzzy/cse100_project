@@ -20,7 +20,7 @@ bool computer::requestCard()
 
 void computer::requestBet()
 {
-    currentBet = static_cast<int>(chips*0.3);
+    currentBet = static_cast<int>(chips*0.3); // The Computer will always bet a certain portion of their chips
 }
 
 computer::~computer()
