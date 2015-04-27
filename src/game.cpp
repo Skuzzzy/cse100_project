@@ -139,16 +139,16 @@ void game::checkWins()
 
 bool game::checkContinue()
 {
-    g.clrPrint("Play another round? N/y: ");
+    g.clrPrint("Play another round? Y/n: ");
     string decision;
     decision = g.getStringInput();
-    if(decision == "y")
+    if(decision == "n")
     {
-        return true;
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
 }
 
