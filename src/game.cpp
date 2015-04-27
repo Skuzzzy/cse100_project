@@ -10,7 +10,7 @@ using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
-    //g.getStringInput();
+    
 
     g.print("Chips\n");
     g.clrPrint("Chips");
@@ -72,6 +72,7 @@ void game::getPlayerBets()
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
         g.print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+        g.print("Your current chip total is: "+ g.intToString((*playerList[i]).getChips())+ string("\n"));
         (*playerList[i]).requestBet();
         g.print("You bet " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
     }
@@ -129,7 +130,7 @@ void game::checkWins()
             // Player wins
             (*playerList[i]).addChips((*playerList[i]).getCurrentBet());
             g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
-            g.print("You won! your current chip total is: "+ g.intToString((*playerList[i]).getChips()) + string("\n") + "Press enter to continue" + string("\n"));
+            g.print("You won! your current chip total is: "+ g.intToString((*playerList[i]).getChips()) + string("\n"));
             
             g.pause();
         }

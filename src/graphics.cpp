@@ -40,6 +40,7 @@ void graphics::refreshNcurses()
 
 void graphics::pause()
 {
+    print("Press enter to continue" + string("\n"));
     cbreak();
     noecho();
     getch();

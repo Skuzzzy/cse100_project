@@ -40,7 +40,7 @@ void human::requestBet()
 
     while(getChips() < c)
     {
-        g.print("You bet too much, please bet no more than " + getChips() + string(" chips.") + string("\n"));
+        g.print("You bet too much, please bet no more than " + g.intToString(getChips()) + string(" chips.") + string("\n"));
         g.print("Place your bet: ");
         choice = g.getStringInput();
         g.print(choice);
