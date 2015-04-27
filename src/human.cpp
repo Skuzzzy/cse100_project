@@ -1,6 +1,9 @@
 #include "human.h"
 
 #include <iostream>
+#include "graphics.h"
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -11,10 +14,10 @@ human::human(int chips) : player(chips)
 
 bool human::requestCard()
 {
-    cout << "Another card?(1/0): ";
-    int choice;
-    cin >> choice;
-    if(choice == 1)
+    graphics g;
+    g.print("Another card?(N/y): ");
+    string choice = g.getStringInput();
+    if(choice == "y")
     {
         return true;
     }
@@ -24,18 +27,28 @@ bool human::requestCard()
     }
 }
 
-    void human::requestBet()
+void human::requestBet()
 {
-    cout << "Place your bet: ";
-    int choice;
-    cin >> choice;
-    while(getChips() < choice)
+    graphics g;
+    g.print("Place your bet: ");
+    string choice = g.getStringInput();
+    
+    stringstream ss(choice);
+
+    int c;
+    ss >> c;
+
+    while(getChips() < c)
     {
-        cout << "You bet too much, please bet no more than " << getChips() << " chips." << endl;
-        cout << "Place your bet: ";
-        cin >> choice;
+        g.print("You bet too much, please bet no more than " + getChips() + string(" chips.") + string("\n"));
+        g.print("Place your bet: ");
+        choice = g.getStringInput();
+        g.print(choice);
+        stringstream s(choice);
+        ss >> c;
     }
-    currentBet = choice;
+    
+    currentBet = c;
 }
 
 human::~human()

@@ -12,6 +12,7 @@ class graphics
 	    void refreshNcurses();
         void clearNcurses();
         void print(string str);
+        void clrPrint(string str);
 	    ~graphics();
         string getStringInput();
     protected:

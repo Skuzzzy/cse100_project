@@ -41,6 +41,13 @@ void graphics::print(string str)
     refresh();
 }
 
+void graphics::clrPrint(string str)
+{
+    clear();
+    printw(str.c_str());;
+    refresh();
+}
+
 graphics::~graphics()
 {
     endwin();

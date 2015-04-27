@@ -4,6 +4,7 @@
 #include "player.h"
 #include "human.h"
 #include "deck.h"
+#include "graphics.h"
 
 #include <vector>
 
@@ -18,6 +19,7 @@ class game
         player* dealer;
         deck blackjackDeck;
         std::vector<player*> playerList;
+        graphics g;
 
         void startGame();
         void dealCards();
