@@ -121,7 +121,7 @@ void game::checkWins()
             //Player loses
             (*playerList[i]).addChips((-1)*((*playerList[i]).getCurrentBet()));
             g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
-            g.print("You lost! your current chip total is: " + g.intToString((*playerList[i]).getChips())  + string("\n") + "Press enter to continue" + string("\n"));
+            g.print("You lost! your current chip total is: " + g.intToString((*playerList[i]).getChips())  + string("\n"));
             (*playerList[i]).getChips();
             g.pause();
         }
