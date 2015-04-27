@@ -42,7 +42,7 @@ public class MakefileGenerator
                 makeFile += " -o obj"+partialName+".o\n";
             }
         }
-        makeFile += "\tg++ -o "+outputName+" obj/*.o\n";
+        makeFile += "\tg++ -o "+outputName+" obj/*.o -lncurses\n";
 
         makeFile += "clean:\n\trm ./obj/*.o\n\trm "+outputName+"\n";
 

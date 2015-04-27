@@ -4,11 +4,15 @@
 #include "player.h"
 #include "human.h"
 #include "computer.h"
+#include "graphics.h"
 
 using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
+    graphics g;
+    g.refreshNcurses();
+
     dealer = new computer(-1);
 
     for(int i=0; i<numHumanPlayers; i++)
