@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 
 #include "graphics.h"
 
@@ -9,6 +10,13 @@ using namespace std;
 graphics::graphics()
 {
     initscr();
+}
+
+string graphics::intToString(int i)
+{
+    stringstream ss;
+	ss << i;
+	return ss.str();
 }
 
 string graphics::getStringInput()
@@ -28,6 +36,13 @@ string graphics::getStringInput()
 void graphics::refreshNcurses()
 {
     refresh();
+}
+
+void graphics::pause()
+{
+    cbreak();
+    noecho();
+    getch();
 }
 
 void graphics::clearNcurses()

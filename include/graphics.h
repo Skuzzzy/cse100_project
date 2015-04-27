@@ -13,8 +13,10 @@ class graphics
         void clearNcurses();
         void print(string str);
         void clrPrint(string str);
+        void pause();
 	    ~graphics();
         string getStringInput();
+        string intToString(int i);
     protected:
     private:
         

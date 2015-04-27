@@ -73,7 +73,7 @@ void game::getPlayerBets()
     {
         g.print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
         (*playerList[i]).requestBet();
-        g.print("You bet " + (*playerList[i]).getCurrentBet() + string("\n"));
+        //g.print("You bet " + (*playerList[i]).getCurrentBet() + string("\n"));
     }
 }
 
@@ -81,7 +81,7 @@ void game::getPlayerDecisions()
 {
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
-        g.print(string("\n") + "Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+        g.clrPrint(string("\n") + "Your hand: " + (*playerList[i]).getHandString() + string("\n"));
         bool hit = (*playerList[i]).requestCard();
         while(hit == true)
         {
@@ -108,6 +108,8 @@ void game::getDealerDecision()
 
 void game::checkWins()
 {
+    
+
     int dealerHandValue = (*dealer).getHandValue();
 
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
@@ -117,25 +119,29 @@ void game::checkWins()
         {
             //Player loses
             (*playerList[i]).addChips((-1)*((*playerList[i]).getCurrentBet()));
-            g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
-            g.print("You lost! your current chip total is: " + (*playerList[i]).getChips() + string("\n"));
+            //g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
+            g.print("You lost! your current chip total is: " + g.intToString((*playerList[i]).getChips())  + string("\n") + "Press enter to continue" + string("\n"));
+            (*playerList[i]).getChips();
+            g.pause();
         }
         else
         {
             // Player wins
             (*playerList[i]).addChips((*playerList[i]).getCurrentBet());
-            g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
-            g.print("You won! your current chip total is: " + (*playerList[i]).getChips() + string("\n"));
+            //g.print("You bet: " + (*playerList[i]).getCurrentBet() + string("\n"));
+            g.print("You won! your current chip total is: "+ g.intToString((*playerList[i]).getChips()) + string("\n") + "Press enter to continue" + string("\n"));
+            
+            g.pause();
         }
     }
 }
 
 bool game::checkContinue()
 {
-    g.print("Play another round? 1/0: ");
-    int decision;
-    cin >> decision;
-    if(decision == 1)
+    g.clrPrint("Play another round? N/y: ");
+    string decision;
+    decision = g.getStringInput();
+    if(decision == "y")
     {
         return true;
     }
