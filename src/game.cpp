@@ -1,9 +1,10 @@
+#include <iostream>
+
 #include "game.h"
 #include "player.h"
 #include "human.h"
 #include "computer.h"
 
-#include <iostream>
 using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)

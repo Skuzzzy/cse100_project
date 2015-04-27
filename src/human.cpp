@@ -1,5 +1,8 @@
 #include "human.h"
+
 #include <iostream>
+
+using namespace std;
 
 human::human(int chips) : player(chips)
 {
@@ -8,9 +11,9 @@ human::human(int chips) : player(chips)
 
 bool human::requestCard()
 {
-    std::cout << "Another card?(1/0): ";
+    cout << "Another card?(1/0): ";
     int choice;
-    std::cin >> choice;
+    cin >> choice;
     if(choice == 1)
     {
         return true;
@@ -23,14 +26,14 @@ bool human::requestCard()
 
     void human::requestBet()
 {
-    std::cout << "Place your bet: ";
+    cout << "Place your bet: ";
     int choice;
-    std::cin >> choice;
+    cin >> choice;
     while(getChips() < choice)
     {
-        std::cout << "You bet too much, please bet no more than " << getChips() << " chips." << std::endl;
-        std::cout << "Place your bet: ";
-        std::cin >> choice;
+        cout << "You bet too much, please bet no more than " << getChips() << " chips." << endl;
+        cout << "Place your bet: ";
+        cin >> choice;
     }
     currentBet = choice;
 }

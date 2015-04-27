@@ -1,5 +1,4 @@
 #include "player.h"
-#include <string>
 
 int player::getCurrentBet()
 {

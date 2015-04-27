@@ -1,6 +1,9 @@
-#include "hand.h"
 #include <vector>
+
+#include "hand.h"
 #include "card.h"
+
+using namespace std;
 
 hand::hand()
 {
@@ -60,9 +63,9 @@ bool hand::hasBust()
     return (calculateHandValue()>21);
 }
 
-std::string hand::toString()
+string hand::toString()
 {
-    std::string handString = "";
+    string handString = "";
     for(int i =0; i<static_cast<int>(cards.size()); i++)
     {
         handString.append("[" + cards[i].toString() + "]");
