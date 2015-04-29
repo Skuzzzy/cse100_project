@@ -14,9 +14,8 @@ human::human(int chips) : player(chips)
 
 bool human::requestCard()
 {
-    graphics g;
-    g.print("Another card?(N/y): ");
-    string choice = g.getStringInput();
+    print("Another card?(N/y): ");
+    string choice = getStringInput();
     if(choice == "y")
     {
         return true;
@@ -29,9 +28,8 @@ bool human::requestCard()
 
 void human::requestBet()
 {
-    graphics g;
-    g.print("Place your bet: ");
-    string choice = g.getStringInput();
+    print("Place your bet: ");
+    string choice = getStringInput();
     
     stringstream ss(choice);
 
@@ -40,10 +38,10 @@ void human::requestBet()
 
     while(getChips() < c)
     {
-        g.print("You bet too much, please bet no more than " + g.intToString(getChips()) + string(" chips.") + string("\n"));
-        g.print("Place your bet: ");
-        choice = g.getStringInput();
-        g.print(choice);
+        print("You bet too much, please bet no more than " + intToString(getChips()) + string(" chips.") + string("\n"));
+        print("Place your bet: ");
+        choice = getStringInput();
+        print(choice);
         stringstream s(choice);
         ss >> c;
     }

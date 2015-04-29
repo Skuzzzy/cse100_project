@@ -10,10 +10,7 @@ using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
-    
-
-    g.print("Chips\n");
-    g.clrPrint("Chips");
+    screenStart();
 
     dealer = new computer(-1);
 
@@ -23,6 +20,7 @@ game::game(int numHumanPlayers, int startingChips)
     }
 
     startGame();
+
 }
 
 void game::startGame()
@@ -55,7 +53,7 @@ void game::startGame()
 
 void game::dealCards()
 {
-    g.clrPrint("Dealing cards\n");
+    clrPrint("Dealing cards\n");
     (*dealer).addCardToHand(blackjackDeck.popCard());
     (*dealer).addCardToHand(blackjackDeck.popCard());
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
@@ -63,18 +61,18 @@ void game::dealCards()
         (*playerList[i]).addCardToHand(blackjackDeck.popCard());
         (*playerList[i]).addCardToHand(blackjackDeck.popCard());
     }
-    g.print("Cards have been dealt\n");
+    print("Cards have been dealt\n");
 }
 
 void game::getPlayerBets()
 {
-    g.clrPrint("Place your bets!\n");
+    clrPrint("Place your bets!\n");
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
-        g.print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
-        g.print("Your current chip total is: "+ g.intToString((*playerList[i]).getChips())+ string("\n"));
+        print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+        print("Your current chip total is: "+ intToString((*playerList[i]).getChips())+ string("\n"));
         (*playerList[i]).requestBet();
-        g.print("You bet " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
+        print("You bet " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
     }
 }
 
@@ -82,29 +80,29 @@ void game::getPlayerDecisions()
 {
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
-        g.clrPrint(string("\n") + "Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+        clrPrint(string("\n") + "Your hand: " + (*playerList[i]).getHandString() + string("\n"));
         bool hit = (*playerList[i]).requestCard();
         while(hit == true)
         {
             (*playerList[i]).addCardToHand(blackjackDeck.popCard());
-            g.print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+            print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
             hit = (*playerList[i]).requestCard();
         }
-        g.print("Player decision complete" + string("\n\n"));
+        print("Player decision complete" + string("\n\n"));
     }
 }
 
 void game::getDealerDecision()
 {
-    g.print("Dealers hand: " + (*dealer).getHandString() + "\n");
+    print("Dealers hand: " + (*dealer).getHandString() + "\n");
     bool hit = (*dealer).requestCard();
     while(hit == true)
     {
         (*dealer).addCardToHand(blackjackDeck.popCard());
-        g.print("Dealers hand: " + (*dealer).getHandString() + "\n");
+        print("Dealers hand: " + (*dealer).getHandString() + "\n");
         hit = (*dealer).requestCard();
     }
-    g.print("Dealer decision complete" + string("\n\n"));
+    print("Dealer decision complete" + string("\n\n"));
 }
 
 void game::checkWins()
@@ -120,28 +118,28 @@ void game::checkWins()
         {
             //Player loses
             (*playerList[i]).addChips((-1)*((*playerList[i]).getCurrentBet()));
-            g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
-            g.print("You lost! your current chip total is: " + g.intToString((*playerList[i]).getChips())  + string("\n"));
+            print("You bet: " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
+            print("You lost! your current chip total is: " + intToString((*playerList[i]).getChips())  + string("\n"));
             (*playerList[i]).getChips();
-            g.pause();
+            pause();
         }
         else
         {
             // Player wins
             (*playerList[i]).addChips((*playerList[i]).getCurrentBet());
-            g.print("You bet: " + g.intToString((*playerList[i]).getCurrentBet()) + string("\n"));
-            g.print("You won! your current chip total is: "+ g.intToString((*playerList[i]).getChips()) + string("\n"));
+            print("You bet: " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
+            print("You won! your current chip total is: "+ intToString((*playerList[i]).getChips()) + string("\n"));
             
-            g.pause();
+            pause();
         }
     }
 }
 
 bool game::checkContinue()
 {
-    g.clrPrint("Play another round? Y/n: ");
+    clrPrint("Play another round? Y/n: ");
     string decision;
-    decision = g.getStringInput();
+    decision = getStringInput();
     if(decision == "n")
     {
         return false;
@@ -164,5 +162,5 @@ void game::resetHands()
 
 game::~game()
 {
-
+    screenEnd();
 }

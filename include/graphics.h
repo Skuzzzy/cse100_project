@@ -5,21 +5,17 @@
 
 using namespace std;
 
-class graphics
-{
-    public:
-	    graphics();
-	    void refreshNcurses();
-        void clearNcurses();
-        void print(string str);
-        void clrPrint(string str);
-        void pause();
-	    ~graphics();
-        string getStringInput();
-        string intToString(int i);
-    protected:
-    private:
-        
-};
+void screenStart();
+void screenEnd();
+
+
+void refreshNcurses();
+void clearNcurses();
+void print(string str);
+void clrPrint(string str);
+void pause();
+
+string getStringInput();
+string intToString(int i);
 
 #endif // GRAPHICS_H

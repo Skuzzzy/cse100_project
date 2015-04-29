@@ -7,19 +7,19 @@
 
 using namespace std;
 
-graphics::graphics()
+void screenStart()
 {
     initscr();
 }
 
-string graphics::intToString(int i)
+string intToString(int i)
 {
     stringstream ss;
 	ss << i;
 	return ss.str();
 }
 
-string graphics::getStringInput()
+string getStringInput()
 {
     string input;
     nocbreak();
@@ -33,12 +33,12 @@ string graphics::getStringInput()
     return input;
 }
 
-void graphics::refreshNcurses()
+void refreshNcurses()
 {
     refresh();
 }
 
-void graphics::pause()
+void pause()
 {
     print("Press enter to continue" + string("\n"));
     cbreak();
@@ -46,25 +46,25 @@ void graphics::pause()
     getch();
 }
 
-void graphics::clearNcurses()
+void clearNcurses()
 {
     clear();
 }
 
-void graphics::print(string str)
+void print(string str)
 {
     printw(str.c_str());;
     refresh();
 }
 
-void graphics::clrPrint(string str)
+void clrPrint(string str)
 {
     clear();
     printw(str.c_str());;
     refresh();
 }
 
-graphics::~graphics()
+void screenEnd()
 {
     endwin();
 }

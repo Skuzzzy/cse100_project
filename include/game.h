@@ -19,7 +19,6 @@ class game
         player* dealer;
         deck blackjackDeck;
         std::vector<player*> playerList;
-        graphics g;
 
         void startGame();
         void dealCards();
