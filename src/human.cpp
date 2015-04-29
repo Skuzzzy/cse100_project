@@ -43,7 +43,7 @@ void human::requestBet()
         choice = getStringInput();
         print(choice);
         stringstream s(choice);
-        ss >> c;
+        s >> c;
     }
     
     currentBet = c;
