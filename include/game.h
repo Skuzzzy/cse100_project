@@ -4,6 +4,7 @@
 #include "player.h"
 #include "human.h"
 #include "deck.h"
+#include "graphics.h"
 
 #include <vector>
 

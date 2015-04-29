@@ -4,11 +4,14 @@
 #include "player.h"
 #include "human.h"
 #include "computer.h"
+#include "graphics.h"
 
 using namespace std;
 
 game::game(int numHumanPlayers, int startingChips)
 {
+    screenStart();
+
     dealer = new computer(-1);
 
     for(int i=0; i<numHumanPlayers; i++)
@@ -17,6 +20,7 @@ game::game(int numHumanPlayers, int startingChips)
     }
 
     startGame();
+
 }
 
 void game::startGame()
@@ -49,7 +53,7 @@ void game::startGame()
 
 void game::dealCards()
 {
-    cout << "Dealing cards" << endl;
+    clrPrint("Dealing cards\n");
     (*dealer).addCardToHand(blackjackDeck.popCard());
     (*dealer).addCardToHand(blackjackDeck.popCard());
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
@@ -57,17 +61,18 @@ void game::dealCards()
         (*playerList[i]).addCardToHand(blackjackDeck.popCard());
         (*playerList[i]).addCardToHand(blackjackDeck.popCard());
     }
-    cout << "Cards have been dealt" << endl;
+    print("Cards have been dealt\n");
 }
 
 void game::getPlayerBets()
 {
-    cout << "Place your bets!" << endl;
+    clrPrint("Place your bets!\n");
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
-        cout << "Your hand: " << (*playerList[i]).getHandString() << endl;
+        print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
+        print("Your current chip total is: "+ intToString((*playerList[i]).getChips())+ string("\n"));
         (*playerList[i]).requestBet();
-        cout << "You bet " << (*playerList[i]).getCurrentBet() << endl;
+        print("You bet " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
     }
 }
 
@@ -75,33 +80,35 @@ void game::getPlayerDecisions()
 {
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
     {
-        cout << endl << "Your hand: " + (*playerList[i]).getHandString() << endl;
+        clrPrint(string("\n") + "Your hand: " + (*playerList[i]).getHandString() + string("\n"));
         bool hit = (*playerList[i]).requestCard();
         while(hit == true)
         {
             (*playerList[i]).addCardToHand(blackjackDeck.popCard());
-            cout << "Your hand: " + (*playerList[i]).getHandString() << endl;
+            print("Your hand: " + (*playerList[i]).getHandString() + string("\n"));
             hit = (*playerList[i]).requestCard();
         }
-        cout << "Player decision complete" << endl << endl;
+        print("Player decision complete" + string("\n\n"));
     }
 }
 
 void game::getDealerDecision()
 {
-    cout << "Dealers hand: " + (*dealer).getHandString() << endl;
+    print("Dealers hand: " + (*dealer).getHandString() + "\n");
     bool hit = (*dealer).requestCard();
     while(hit == true)
     {
         (*dealer).addCardToHand(blackjackDeck.popCard());
-        cout << "Dealers hand: " + (*dealer).getHandString() << endl;
+        print("Dealers hand: " + (*dealer).getHandString() + "\n");
         hit = (*dealer).requestCard();
     }
-    cout << "Dealer decision complete" << endl << endl;
+    print("Dealer decision complete" + string("\n\n"));
 }
 
 void game::checkWins()
 {
+    
+
     int dealerHandValue = (*dealer).getHandValue();
 
     for(int i =0; i<static_cast<int>(playerList.size()); i++)
@@ -111,31 +118,35 @@ void game::checkWins()
         {
             //Player loses
             (*playerList[i]).addChips((-1)*((*playerList[i]).getCurrentBet()));
-            cout << "You bet: " << (*playerList[i]).getCurrentBet() << endl;
-            cout << "You lost! your current chip total is: " << (*playerList[i]).getChips() << endl;
+            print("You bet: " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
+            print("You lost! your current chip total is: " + intToString((*playerList[i]).getChips())  + string("\n"));
+            (*playerList[i]).getChips();
+            pause();
         }
         else
         {
             // Player wins
             (*playerList[i]).addChips((*playerList[i]).getCurrentBet());
-            cout << "You bet: " << (*playerList[i]).getCurrentBet() << endl;
-            cout << "You won! your current chip total is: " << (*playerList[i]).getChips() << endl;
+            print("You bet: " + intToString((*playerList[i]).getCurrentBet()) + string("\n"));
+            print("You won! your current chip total is: "+ intToString((*playerList[i]).getChips()) + string("\n"));
+            
+            pause();
         }
     }
 }
 
 bool game::checkContinue()
 {
-    cout << "Play another round? 1/0: ";
-    int decision;
-    cin >> decision;
-    if(decision == 1)
+    clrPrint("Play another round? Y/n: ");
+    string decision;
+    decision = getStringInput();
+    if(decision == "n")
     {
-        return true;
+        return false;
     }
     else
     {
-        return false;
+        return true;
     }
 }
 
@@ -151,5 +162,5 @@ void game::resetHands()
 
 game::~game()
 {
-
+    screenEnd();
 }
